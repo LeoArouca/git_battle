@@ -6,6 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "babel": {
+    "presets": ["env", "react"]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LeoArouca/git_battle.git"
@@ -33,3 +36,6 @@
     "webpack-dev-server": "^3.1.3"
   }
 }
+
+// babel-preset-env -> transform es2017 ... to current js
+//
