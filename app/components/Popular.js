@@ -1,4 +1,31 @@
 var React = require('react');
+var PropTypes = require ('prop-types');
+
+// Component here instead of new file since its only used here
+class SelectLanguage extends React.Component{
+    render(){
+      var languages = ['All','Javascript','Ruby','Java','CSS','Python'];
+      return(
+      <ul className='languages'>
+        { languages.map(function(lang){
+          return(
+            <li
+              style={lang === this.props.selectedLanguage ? {color: '#dd00ee'}:null}
+              key={lang}
+              onClick={this.props.onSelect.bind(null, lang)}>
+              {lang}
+            </li>
+          )
+        }, this)}
+      </ul>
+    );
+  }
+}
+
+SelectLanguage.propTypes = {
+  selectedLanguage: PropTypes.string.isRequired,
+  onSelect: PropTypes.func.isRequired,
+};
 
 class Popular extends React.Component{
 
@@ -21,52 +48,15 @@ class Popular extends React.Component{
     });
   }
 
-  //         }, this)}
-  // this second argument is the context to bind
-
-  // this.updateLanguage.bind(null, lang)
-  // already bound in the constructor so, null is fine. then it passes the var
   render(){
-    var languages = ['All','Javascript','Ruby','Java','CSS','Python'];
-
     return(
-      <ul className='languages'>
-        <p>{`Selected Language: ${this.state.selectedLanguage}`}</p>
-        { languages.map(function(lang){
-          return(
-            <li
-              style={lang === this.state.selectedLanguage ? {color: '#dd00ee'}:null}
-              key={lang}
-              onClick={this.updateLanguage.bind(null, lang)}>
-              {lang}
-            </li>
-          )
-        }, this)}
-      </ul>
+      <div>
+        <SelectLanguage
+          selectedLanguage={this.state.selectedLanguage}
+          onSelect={this.updateLanguage} />
+      </div>
     );
   }
 }
 
-  // !! Arrow function - the good this is that the this inside it, its the same as outside
-  // { languages.map(function(lang){. become { languages.map((lang) => {
-  // render(){
-  //   var languages = ['All','Javascript','Ruby','Java','CSS','Python'];
-
-  //   return(
-  //     <ul className='languages'>
-  //       <p>{`Selected Language: ${this.state.selectedLanguage}`}</p>
-  //       { languages.map((lang) => {
-  //         return(
-  //           <li
-  //             style={lang === this.state.selectedLanguage ? {color: '#dd00ee'}:null}
-  //             key={lang}
-  //             onClick={this.updateLanguage.bind(null, lang)}>
-  //             {lang}
-  //           </li>
-  //         )
-  //       })}
-  //     </ul>
-  //   );
-
-// Export to be used somewhere else
 module.exports = Popular;
