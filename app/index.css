@@ -4,7 +4,6 @@ body {
 
 .container {
   max-width: 1200px;
-  /*centers everything inside this*/
   margin: 0 auto;
 }
 
@@ -16,6 +15,15 @@ li {
   list-style-type: none;
 }
 
+.avatar {
+  width: 150px;
+  border-radius: 50%;
+}
+
+.space-list-items {
+  margin-bottom: 7px;
+}
+
 .languages {
   display: flex;
   justify-content: center;
@@ -25,4 +33,20 @@ li {
   margin: 10px;
   font-weight: bold;
   cursor: pointer;
+}
+
+.popular-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.popular-item {
+  margin: 20px;
+  text-align: center;
+}
+
+.popular-rank {
+  font-size: 20px;
+  margin: 10px;
 }
